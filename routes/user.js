@@ -24,3 +24,5 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req, res) => {
   res.send('logout')
 })
+
+module.exports = router
