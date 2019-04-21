@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
 // 載入路由器。當路徑是/todos時，執行後面的callback函數 require('./routes/todo')
 app.use('/', require('./routes/home'))
 app.use('/todos', require('./routes/todo'))
+app.use('/users', require('./routes/user'))
 
 app.listen(3000, () => {
   console.log('App is running!')
