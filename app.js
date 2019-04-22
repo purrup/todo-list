@@ -24,9 +24,10 @@ app.use(methodOverride('_method'))
 // 使用 express session
 app.use(
   session({
-    secret: 'your secret key', // secret: 定義一組自己的私鑰（字串, 字串內容可隨意)
+    secret: 'your secret key', // secret: 定義一組自己的私鑰（字串)
   })
 )
+
 // 使用 Passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -62,7 +63,7 @@ app.get('/', (req, res) => {
 // 載入路由器。當路徑是/todos時，執行後面的callback函數 require('./routes/todo')
 app.use('/', require('./routes/home'))
 app.use('/todos', require('./routes/todo'))
-app.use('/users', require('./routes/user'))
+app.use('/users', require('./routes/user')) // 新增的 user 路由器
 
 app.listen(3000, () => {
   console.log('App is running!')

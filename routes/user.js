@@ -1,12 +1,13 @@
+// routes/user.js
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const User = require('../models/user') // 載入 User model
 const passport = require('passport')
-
 // 登入頁面
 router.get('/login', (req, res) => {
   res.render('login')
 })
+
 // 登入檢查
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
@@ -23,7 +24,6 @@ router.get('/register', (req, res) => {
 
 // 註冊檢查
 router.post('/register', (req, res) => {
-  // Destructuring 可以將陣列或物件中的資料取出成為獨立變數 = 一次宣告多個變數
   const { name, email, password, password2 } = req.body
   User.findOne({ email: email }).then(user => {
     if (user) {
